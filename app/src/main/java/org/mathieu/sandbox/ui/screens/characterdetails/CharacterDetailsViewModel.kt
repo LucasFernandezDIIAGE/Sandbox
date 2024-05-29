@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import org.mathieu.sandbox.data.CharacterRepositoryImpl
+import org.mathieu.sandbox.domain.models.Episode
 
 class CharacterDetailsViewModel(application: Application) : AndroidViewModel(application) {
     private val _state: MutableStateFlow<CharacterDetailsState> = MutableStateFlow(CharacterDetailsState())
@@ -17,7 +18,8 @@ class CharacterDetailsViewModel(application: Application) : AndroidViewModel(app
 
         _state.value = CharacterDetailsState(
             firstName = character.firstName,
-            lastName = character.lastName
+            lastName = character.lastName,
+            episodes = character.episodes
         )
 
     }
@@ -28,5 +30,6 @@ class CharacterDetailsViewModel(application: Application) : AndroidViewModel(app
 
 data class CharacterDetailsState(
     val firstName: String = "",
-    val lastName: String = ""
+    val lastName: String = "",
+    val episodes: List<Episode> = emptyList()
 )
